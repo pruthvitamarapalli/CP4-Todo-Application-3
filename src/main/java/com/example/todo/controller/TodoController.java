@@ -1,15 +1,15 @@
 package com.example.todo.controller;
 
-import com.example.todo.model.Todo;
-import com.example.todo.service.TodoJpaService;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.todo.model.Todo;
+import com.example.todo.service.TodoJpaService;
 
 @RestController
 public class TodoController {
+
     @Autowired
     private TodoJpaService todoService;
 
@@ -18,14 +18,14 @@ public class TodoController {
         return todoService.getTodos();
     }
 
-    @PostMapping("/todos")
-    public Todo addTodo(@RequestBody Todo todo) {
-        return todoService.addTodo(todo);
-    }
-
     @GetMapping("/todos/{id}")
     public Todo getTodoById(@PathVariable("id") int id) {
         return todoService.getTodoById(id);
+    }
+
+    @PostMapping("/todos")
+    public Todo addTodo(@RequestBody Todo todo) {
+        return todoService.addTodo(todo);
     }
 
     @PutMapping("/todos/{id}")

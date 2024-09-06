@@ -1,5 +1,6 @@
 package com.example.todo.model;
 
+
 import javax.persistence.*;
 
 @Entity
@@ -7,28 +8,26 @@ import javax.persistence.*;
 public class Todo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "todo")
     private String todo;
 
-    @Column(name = "status")
-    private String status;
-
     @Column(name = "priority")
     private String priority;
 
-    public Todo() {
+    @Column(name = "status")
+    private String status;
 
-    }
+    public Todo(){}
 
-    public Todo(int id, String todo, String status, String priority) {
+    public Todo(int id, String todo, String priority, String status) {
         this.id = id;
         this.todo = todo;
-        this.status = status;
         this.priority = priority;
+        this.status = status;
     }
 
     public int getId() {
@@ -47,14 +46,6 @@ public class Todo {
         this.todo = todo;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getPriority() {
         return priority;
     }
@@ -63,4 +54,12 @@ public class Todo {
         this.priority = priority;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
+
